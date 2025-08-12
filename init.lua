@@ -681,6 +681,17 @@ require('lazy').setup({
         -- ts_ls = {},
         --
 
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "basic",
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -760,6 +771,14 @@ require('lazy').setup({
         ['typescriptreact'] = { 'biome-check' },
         ['json'] = { 'biome-check' },
         ['css'] = { 'biome-check' },
+        python = { 'ruff_format' },
+      },
+      formatters = {
+        ruff_format = {
+          command = vim.fn.stdpath('data') .. '/mason/bin/ruff',
+          args = { 'format', '--stdin-filename', '$FILENAME', '-' },
+          stdin = true,
+        },
       },
     },
   },
